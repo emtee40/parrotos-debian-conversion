@@ -160,3 +160,31 @@ function headless() {
     install_packages "${headless_packages[@]}"
     echo "[!] Headless installation completed successfully."
 }
+
+function display_menu() {
+    echo "========== ParrotOS Editions Installer =========="
+    echo "1) Install Core Edition"
+    echo "2) Install Home Edition"
+    echo "3) Install Security Edition"
+    echo "4) Install Hack The Box Edition"
+    echo "5) Install headless packages"
+    echo "6) Exit"
+    echo "================================================="
+}
+
+check_sudo
+while true; do
+    display_menu
+
+    read -p "Enter the option number: " option
+
+    case $option in
+        1) core ;;
+        2) home ;;
+        3) security ;;
+        4) htb ;;
+        5) headless ;;
+        6) echo "Exiting..."; exit 0 ;;
+        *) echo "Invalid option. Please try again." ;;
+    esac
+done
