@@ -57,7 +57,7 @@ function core() {
 
     install_packages "${core_packages[@]}"
 
-    run "wget -qO- https://deb.parrotsec.org/parrot/misc/parrotsec.gpg | apt-key add -" "adding GPG key"
+    run "wget -qO- https://deb.parrotsec.org/parrot/misc/parrotsec.gpg | gpg --dearmor -o /usr/share/keyrings/parrot-archive-keyring.gpg" "adding GPG key"
 
     run "cp config/etc/apt/sources.list /etc/apt/sources.list" "copying sources.list"
     run "cp -r config/etc/apt/sources.list.d/* /etc/apt/sources.list.d" "copying sources.list.d"
