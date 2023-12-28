@@ -47,9 +47,16 @@ function install_packages() {
 
 # Installs the Core Edition packages.
 function core() {
-    run "apt update" "updating package lists"
-    run "apt install -y bash wget gnupg" "installing required packages"
+    local core_packages=(
+        bash 
+        wget 
+        gnupg
+    )
 
+    run "apt update" "updating package lists"
+
+    install_packages "${core_packages[@]}"
+    
     run "wget -qO- https://deb.parrotsec.org/parrot/misc/parrotsec.gpg | apt-key add -" "adding GPG key"
 
     run "cp /etc/apt/sources.list /etc/apt/sources.list" "copying sources.list"
@@ -83,6 +90,7 @@ function home() {
         parrot-configs-zsh
         parrot-displaymanager
         firefox
+        parrot-firefox-profiles
         vscodium
     )
 
@@ -106,6 +114,7 @@ function security() {
         parrot-configs-zsh
         parrot-displaymanager
         firefox
+        parrot-firefox-profiles
         vscodium
     )
 
@@ -130,9 +139,22 @@ function htb() {
         hackthebox-icon-theme
         win10-icon-theme
         firefox
+        parrot-firefox-profiles
         vscodium
     )
 
     install_packages "${htb_packages[@]}"
     echo "[!] Hack The Box Edition packages installation completed successfully."
+}
+
+function headless() {
+    local headless_packages=(
+        parrot-core-lite
+        base-files
+        parrot-apps-basics
+        parrot-drivers
+    )
+
+    install_packages "${headless_packages[@]}"
+    echo "[!] Headless installation completed successfully."
 }
