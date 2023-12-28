@@ -30,9 +30,7 @@ function run() {
     fi
 }
 
-# Main functions
-
-# Description: Installs a list of packages.
+# Installs a list of packages
 function install_packages() {
     local packages=("$@")
 
@@ -45,6 +43,8 @@ function install_packages() {
     run "apt install -y ${packages[*]}" "Installing packages: ${packages[*]}"
 }
 
+# Main functions
+
 # Installs the Core Edition packages.
 function core() {
     local core_packages=(
@@ -56,7 +56,7 @@ function core() {
     run "apt update" "updating package lists"
 
     install_packages "${core_packages[@]}"
-    
+
     run "wget -qO- https://deb.parrotsec.org/parrot/misc/parrotsec.gpg | apt-key add -" "adding GPG key"
 
     run "cp /etc/apt/sources.list /etc/apt/sources.list" "copying sources.list"
@@ -74,7 +74,7 @@ function core() {
     echo "[!] Core Edition packages installation completed successfully."
 }
 
-# Installs the Home Edition packages.
+# Installs the Home Edition packages
 function home() {
     local home_packages=(
         parrot-interface-home
@@ -98,7 +98,7 @@ function home() {
     echo "[!] Home Edition packages installation completed successfully."
 }
 
-# Installs the Security Edition packages.
+# Installs the Security Edition packages
 function security() {
     local security_packages=(
         parrot-interface-home
@@ -122,6 +122,7 @@ function security() {
     echo "[!] Security Edition packages installation completed successfully."
 }
 
+# Installs the HTB Edition packages
 function htb() {
     local htb_packages=(
         parrot-interface-home
@@ -147,6 +148,7 @@ function htb() {
     echo "[!] Hack The Box Edition packages installation completed successfully."
 }
 
+# Installs the headless edition packages
 function headless() {
     local headless_packages=(
         parrot-core-lite
