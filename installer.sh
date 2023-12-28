@@ -87,7 +87,6 @@ function home() {
         parrot-wallpapers
         parrot-themes
         parrot-meta-privacy
-        parrot-configs-zsh
         parrot-displaymanager
         firefox-esr
         parrot-firefox-profiles
@@ -111,7 +110,6 @@ function security() {
         parrot-wallpapers
         parrot-tools-full
         parrot-themes
-        parrot-configs-zsh
         parrot-displaymanager
         firefox-esr
         parrot-firefox-profiles
@@ -135,7 +133,6 @@ function htb() {
         parrot-wallpapers
         parrot-tools-full
         parrot-themes
-        parrot-configs-zsh
         parrot-displaymanager
         hackthebox-icon-theme
         win10-icon-theme
