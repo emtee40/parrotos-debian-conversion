@@ -86,7 +86,6 @@ function home() {
         parrot-desktop-mate
         parrot-wallpapers
         parrot-themes
-        parrot-meta-privacy
         parrot-displaymanager
         firefox-esr
         parrot-firefox-profiles
