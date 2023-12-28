@@ -59,13 +59,13 @@ function core() {
 
     run "wget -qO- https://deb.parrotsec.org/parrot/misc/parrotsec.gpg | apt-key add -" "adding GPG key"
 
-    run "cp /etc/apt/sources.list /etc/apt/sources.list" "copying sources.list"
-    run "cp -r /etc/apt/sources.list.d/* /etc/apt/sources.list.d" "copying sources.list.d"
-    run "cp /etc/apt/listchanges.conf /etc/apt/listchanges.conf" "copying listchanges.conf"
+    run "cp config/etc/apt/sources.list /etc/apt/sources.list" "copying sources.list"
+    run "cp -r config/etc/apt/sources.list.d/* /etc/apt/sources.list.d" "copying sources.list.d"
+    run "cp config/etc/apt/listchanges.conf /etc/apt/listchanges.conf" "copying listchanges.conf"
 
     run "apt update" "updating package lists"
 
-    run "cp /etc/os-release /etc/os-release" "copying os-release"
+    run "cp config/etc/os-release /etc/os-release" "copying os-release"
     run "apt update" "updating package lists"
     run "apt upgrade -y" "upgrading packages"
 
