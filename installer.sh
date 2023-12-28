@@ -45,7 +45,7 @@ function install_packages() {
     run "apt install -y ${packages[*]}" "Installing packages: ${packages[*]}"
 }
 
-# Installs the Parrot OS Core packages.
+# Installs the Core Edition packages.
 function core() {
     run "apt update" "updating package lists"
     run "apt install -y bash wget gnupg" "installing required packages"
@@ -64,9 +64,10 @@ function core() {
 
     run "apt install -y parrot-core" "installing parrot-core"
 
-    echo "ParrotOS Core installation completed successfully."
+    echo "[!] Core Edition packages installation completed successfully."
 }
 
+# Installs the Home Edition packages.
 function home() {
     local home_packages=(
         parrot-interface-home
@@ -77,6 +78,7 @@ function home() {
         parrot-menu
         parrot-desktop-mate
         parrot-wallpapers
+        parrot-themes
         parrot-meta-privacy
         parrot-configs-zsh
         parrot-displaymanager
@@ -85,12 +87,52 @@ function home() {
     )
 
     install_packages "${home_packages[@]}"
+    echo "[!] Home Edition packages installation completed successfully."
 }
 
+# Installs the Security Edition packages.
 function security() {
+    local security_packages=(
+        parrot-interface-home
+        desktop-base
+        base-files
+        anonsurf
+        parrot-drivers
+        parrot-menu
+        parrot-desktop-mate
+        parrot-wallpapers
+        parrot-tools-full
+        parrot-themes
+        parrot-configs-zsh
+        parrot-displaymanager
+        firefox
+        vscodium
+    )
 
+    install_packages "${security_packages[@]}"
+    echo "[!] Security Edition packages installation completed successfully."
 }
 
 function htb() {
+    local htb_packages=(
+        parrot-interface-home
+        desktop-base
+        base-files
+        anonsurf
+        parrot-drivers
+        parrot-menu
+        parrot-desktop-mate
+        parrot-wallpapers
+        parrot-tools-full
+        parrot-themes
+        parrot-configs-zsh
+        parrot-displaymanager
+        hackthebox-icon-theme
+        win10-icon-theme
+        firefox
+        vscodium
+    )
 
+    install_packages "${htb_packages[@]}"
+    echo "[!] Hack The Box Edition packages installation completed successfully."
 }
