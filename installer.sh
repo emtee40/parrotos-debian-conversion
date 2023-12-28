@@ -89,7 +89,7 @@ function home() {
         parrot-meta-privacy
         parrot-configs-zsh
         parrot-displaymanager
-        firefox
+        firefox-esr
         parrot-firefox-profiles
         vscodium
     )
@@ -113,7 +113,7 @@ function security() {
         parrot-themes
         parrot-configs-zsh
         parrot-displaymanager
-        firefox
+        firefox-esr
         parrot-firefox-profiles
         vscodium
     )
@@ -139,7 +139,7 @@ function htb() {
         parrot-displaymanager
         hackthebox-icon-theme
         win10-icon-theme
-        firefox
+        firefox-esr
         parrot-firefox-profiles
         vscodium
     )
