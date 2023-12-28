@@ -32,6 +32,19 @@ function run() {
 
 # Main functions
 
+# Description: Installs a list of packages.
+function install_packages() {
+    local packages=("$@")
+
+    # Ensure there are packages to install
+    if [ ${#packages[@]} -eq 0 ]; then
+        handle_error "No packages specified for installation."
+    fi
+
+    # Install the specified packages
+    run "apt install -y ${packages[*]}" "Installing packages: ${packages[*]}"
+}
+
 # Installs the Parrot OS Core packages.
 function core() {
     run "apt update" "updating package lists"
@@ -55,7 +68,23 @@ function core() {
 }
 
 function home() {
+    local home_packages=(
+        parrot-interface-home
+        desktop-base
+        base-files
+        anonsurf
+        parrot-drivers
+        parrot-menu
+        parrot-desktop-mate
+        parrot-wallpapers
+        parrot-meta-privacy
+        parrot-configs-zsh
+        parrot-displaymanager
+        firefox
+        vscodium
+    )
 
+    install_packages "${home_packages[@]}"
 }
 
 function security() {
