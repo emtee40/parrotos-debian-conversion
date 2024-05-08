@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# Check if the user ID is not 0 (not root)
+# Function to check if the user is root
 function check_sudo() {
     if [ "$(id -u)" != 0 ]; then
-        echo "Error: This script requires sudo privileges. Please run it with sudo."
+        echo "Error: This script requires sudo privileges. Please run it with sudo." >&2
         exit 1
     fi
 }
 
-# Prints an error message and exits the script
+# Function to handle errors
 function handle_error() {
     local error_message="$1"
-    echo "Error: $error_message"
+    echo "Error: $error_message" >&2
     exit 1
 }
 
-# Executes a command and handles errors
+# Function to execute a command and handle errors
 function run() {
     local command="$1"
     local description="$2"
@@ -30,22 +30,18 @@ function run() {
     fi
 }
 
-# Installs a list of packages
+# Function to install packages
 function install_packages() {
     local packages=("$@")
 
-    # Ensure there are packages to install
     if [ ${#packages[@]} -eq 0 ]; then
         handle_error "No packages specified for installation."
     fi
 
-    # Install the specified packages
     run "apt install -y ${packages[*]}" "Installing packages: ${packages[*]}"
 }
 
-# Main functions
-
-# Installs the Core Edition packages.
+# Function to install Core Edition packages
 function core() {
     local core_packages=(
         bash 
@@ -53,28 +49,22 @@ function core() {
         gnupg
     )
 
-    run "apt update" "updating package lists"
-
+    run "apt update" "Updating package lists"
     install_packages "${core_packages[@]}"
-
-    run "wget -qO- https://deb.parrotsec.org/parrot/misc/parrotsec.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/parrot-archive-keyring.gpg" "adding GPG key"
-
-    run "cp config/etc/apt/sources.list /etc/apt/sources.list" "copying sources.list"
-    run "cp -r config/etc/apt/sources.list.d/* /etc/apt/sources.list.d" "copying sources.list.d"
-    run "cp config/etc/apt/listchanges.conf /etc/apt/listchanges.conf" "copying listchanges.conf"
-
-    run "apt update" "updating package lists"
-
-    run "cp config/etc/os-release /etc/os-release" "copying os-release"
-    run "apt update" "updating package lists"
-    run "apt upgrade -y" "upgrading packages"
-
-    run "apt install -y parrot-core" "installing parrot-core"
+    run "wget -qO- https://deb.parrotsec.org/parrot/misc/parrotsec.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/parrot-archive-keyring.gpg" "Adding GPG key"
+    run "cp config/etc/apt/sources.list /etc/apt/sources.list" "Copying sources.list"
+    run "cp -r config/etc/apt/sources.list.d/* /etc/apt/sources.list.d" "Copying sources.list.d"
+    run "cp config/etc/apt/listchanges.conf /etc/apt/listchanges.conf" "Copying listchanges.conf"
+    run "apt update" "Updating package lists"
+    run "cp config/etc/os-release /etc/os-release" "Copying os-release"
+    run "apt update" "Updating package lists"
+    run "apt upgrade -y" "Upgrading packages"
+    run "apt install -y parrot-core" "Installing parrot-core"
 
     echo "[!] Core Edition packages installation completed successfully."
 }
 
-# Installs the Home Edition packages
+# Function to install Home Edition packages
 function home() {
     local home_packages=(
         parrot-interface-home
@@ -96,7 +86,7 @@ function home() {
     echo "[!] Home Edition packages installation completed successfully."
 }
 
-# Installs the Security Edition packages
+# Function to install Security Edition packages
 function security() {
     local security_packages=(
         parrot-interface-home
@@ -119,7 +109,7 @@ function security() {
     echo "[!] Security Edition packages installation completed successfully."
 }
 
-# Installs the HTB Edition packages
+# Function to install Hack The Box Edition packages
 function htb() {
     local htb_packages=(
         parrot-interface-home
@@ -144,7 +134,7 @@ function htb() {
     echo "[!] Hack The Box Edition packages installation completed successfully."
 }
 
-# Installs the headless edition packages
+# Function to install headless edition packages
 function headless() {
     local headless_packages=(
         parrot-core-lite
@@ -157,21 +147,23 @@ function headless() {
     echo "[!] Headless installation completed successfully."
 }
 
+# Function to display menu
 function display_menu() {
     echo "========== ParrotOS Editions Installer =========="
-    echo "1) Install Core Edition"
-    echo "2) Install Home Edition"
-    echo "3) Install Security Edition"
-    echo "4) Install Hack The Box Edition"
-    echo "5) Install headless packages"
+    echo "1) Install Core Edition: Minimal installation for server use."
+    echo "2) Install Home Edition: Full desktop environment for daily use."
+    echo "3) Install Security Edition: Tools for security testing and auditing."
+    echo "4) Install Hack The Box Edition: Customized environment for Hack The Box labs."
+    echo "5) Install Headless Edition: Minimal installation without GUI for servers."
     echo "6) Exit"
     echo "================================================="
 }
 
+# Main script
+
 check_sudo
 while true; do
     display_menu
-
     read -p "Enter the option number: " option
 
     case $option in
