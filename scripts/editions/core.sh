@@ -17,6 +17,9 @@ core() {
     run "cp config/system/etc/os-release /etc/os-release" "Copying os-release"
     run "apt update" "Updating package lists"
     run "apt upgrade -y" "Upgrading packages"
+    if [ $(uname -m) == "aarch64" ]; then
+        run "apt-mark hold broadcom-sta-dkms" "Blacklisting incompatible package broadcom-sta-dkms"
+    fi
     run "apt install -y parrot-core" "Installing parrot-core"
 
     echo "[!] Core Edition packages installation completed successfully."
