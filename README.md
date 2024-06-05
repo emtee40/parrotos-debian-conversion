@@ -8,8 +8,8 @@ Its use is quite simple:
 
 1. open a terminal window
 2. clone this repository
-3. run `sudo chmod +x ./installer.sh`
-4. type `./installer.sh`
+3. run `sudo chmod +x ./install.sh`
+4. type `./install.sh`
 
 A menu will open:
 
