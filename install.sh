@@ -26,10 +26,10 @@ while true; do
     read -p "Enter the option number: " option
     case $option in
         1) core ;;
-        2) home ;;
-        3) security ;;
-        4) htb ;;
-        5) headless ;;
+        2) core && home ;;
+        3) core && security ;;
+        4) core && htb ;;
+        5) core && headless ;;
         6) echo "Exiting..."; exit 0 ;;
         *) echo "Invalid option. Please try again." ;;
     esac
