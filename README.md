@@ -1,17 +1,26 @@
-# Installer script for ParrotOS
+# Debian Conversion Script
 
-This project stands as a replacement for the [alternate-install](https://github.com/ParrotSec/alternate-install) which is no longer maintained. It is updated to the latest Parrot release.
+## Overview
 
-## How to use
+**Debian Conversion Script** is an installer script for ParrotOS. This project stands as a replacement for the [alternate-install](https://github.com/ParrotSec/alternate-install) which is no longer maintained. It is updated to the latest Parrot release.
 
-Its use is quite simple:
+## How to Use
 
-1. open a terminal window
-2. clone this repository
-3. run `sudo chmod +x ./install.sh`
-4. type `./install.sh`
+Using this script is quite simple. Follow the steps below:
 
-A menu will open:
+1. **Open a terminal window**
+2. **Clone this repository**
+
+   ```bash
+   git clone https://gitlab.com/parrotsec/project/debian-conversion-script.git
+   cd debian-conversion-script
+   sudo chmod +x ./install.sh
+   ./install.sh
+   ```
+
+## Menu Options
+
+Upon running the script, a menu will appear:
 
     ========== ParrotOS Editions Installer ==========
     1) Install Core Edition
@@ -22,6 +31,24 @@ A menu will open:
     6) Exit
     =================================================
 
-You will need to choose the option by typing a number, such as 1 to install the core edition packages.
+Choose the desired option by typing the corresponding number (e.g., type 1 to install the Core Edition packages).
 
-Tested on Debian 12 (virtual machines and Docker containers).
+## Available Editions
+
+- **Core Edition**: Installs the minimal base system without any graphical interface or additional tools. Ideal for advanced users who want to customize their installation.
+
+- **Home Edition**: Installs a user-friendly environment with a complete suite of daily use applications, including office software, multimedia tools, and general utilities.
+
+- **Security Edition**: Installs a comprehensive suite of security tools and utilities for penetration testing, forensics, and vulnerability assessment.
+
+- **Hack The Box Edition**: Installs tools and configurations optimized for use with Hack The Box, a popular online platform for practicing penetration testing and ethical hacking.
+
+- **Headless packages**: Installs necessary packages for running ParrotOS without a graphical interface. Suitable for servers and remote systems.
+
+## Compatibility
+
+This script has been tested on Debian 12, including virtual machines and Docker containers.
+
+## Contributions
+
+Contributions are welcome! If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request.
