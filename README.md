@@ -33,9 +33,9 @@ Upon running the script, a menu will appear:
 
 Choose the desired option by typing the corresponding number (e.g., type 1 to install the Core Edition packages).
 
-## Available Editions
+### Available Editions
 
-- **Core Edition**: Installs the minimal base system without any graphical interface or additional tools. Ideal for advanced users who want to customize their installation.
+- **Core Edition**: Installs the minimal base system without any graphical interface  or additional tools. Ideal for advanced users who want to customize their installation.
 
 - **Home Edition**: Installs a user-friendly environment with a complete suite of daily use applications, including office software, multimedia tools, and general utilities.
 
@@ -44,6 +44,31 @@ Choose the desired option by typing the corresponding number (e.g., type 1 to in
 - **Hack The Box Edition**: Installs tools and configurations optimized for use with Hack The Box, a popular online platform for practicing penetration testing and ethical hacking.
 
 - **Headless packages**: Installs necessary packages for running ParrotOS without a graphical interface. Suitable for servers and remote systems.
+
+## Post installation
+
+Some configuration files that may contains customization won't be converted by this script and (if wanted) need to be copyied manually.
+
+### bashrc
+
+The parrot version for the default bashrc can be found in **/usr/share/base-files/dot.bashrc**. This file can be copied to the following locations:
+- /etc/bash.bashrc
+- /etc/skel/.bashrc
+- /root/.bashrc
+
+### profile
+
+The parrot version for the default profile can be found in **/usr/share/base-files/dot.profile**. This file can be copied to the following locations:
+- /etc/profile
+- /etc/skel/.profile
+- /root/.profile
+
+### /etc/skel
+
+The configuration files in **/etc/skel** are used to populate every user home
+directory upon the user creation. Since the conversion script relies on a pre-installed distribution all the already created users won't have parrot default configurations installed in their home directories. 
+To reach a full parrot customization the content of /etc/skel should be copied
+on every user home directory, but paying attention to avoid override customization that the user may have done on those files.
 
 ## Compatibility
 
