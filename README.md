@@ -33,9 +33,9 @@ Upon running the script, a menu will appear:
 
 Choose the desired option by typing the corresponding number (e.g., type 1 to install the Core Edition packages).
 
-### Available Editions
+## Available Editions
 
-- **Core Edition**: Installs the minimal base system without any graphical interface  or additional tools. Ideal for advanced users who want to customize their installation.
+- **Core Edition**: Installs the minimal base system without any graphical interface or additional tools. Ideal for advanced users who want to customize their installation.
 
 - **Home Edition**: Installs a user-friendly environment with a complete suite of daily use applications, including office software, multimedia tools, and general utilities.
 
@@ -44,6 +44,14 @@ Choose the desired option by typing the corresponding number (e.g., type 1 to in
 - **Hack The Box Edition**: Installs tools and configurations optimized for use with Hack The Box, a popular online platform for practicing penetration testing and ethical hacking.
 
 - **Headless packages**: Installs necessary packages for running ParrotOS without a graphical interface. Suitable for servers and remote systems.
+
+## Compatibility
+
+This script has been tested on Debian 12, including virtual machines and Docker containers.
+
+## Contributions
+
+Contributions are welcome! If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
 ## Post installation
 
@@ -70,10 +78,3 @@ directory upon the user creation. Since the conversion script relies on a pre-in
 To reach a full parrot customization the content of /etc/skel should be copied
 on every user home directory, but paying attention to avoid override customization that the user may have done on those files.
 
-## Compatibility
-
-This script has been tested on Debian 12, including virtual machines and Docker containers.
-
-## Contributions
-
-Contributions are welcome! If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request.
