@@ -52,3 +52,29 @@ This script has been tested on Debian 12, including virtual machines and Docker 
 ## Contributions
 
 Contributions are welcome! If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+## Post installation
+
+Some configuration files that may contains customization won't be converted by this script and (if wanted) need to be copyied manually.
+
+### bashrc
+
+The parrot version for the default bashrc can be found in **/usr/share/base-files/dot.bashrc**. This file can be copied to the following locations:
+- /etc/bash.bashrc
+- /etc/skel/.bashrc
+- /root/.bashrc
+
+### profile
+
+The parrot version for the default profile can be found in **/usr/share/base-files/dot.profile**. This file can be copied to the following locations:
+- /etc/profile
+- /etc/skel/.profile
+- /root/.profile
+
+### /etc/skel
+
+The configuration files in **/etc/skel** are used to populate every user home
+directory upon the user creation. Since the conversion script relies on a pre-installed distribution all the already created users won't have parrot default configurations installed in their home directories. 
+To reach a full parrot customization the content of /etc/skel should be copied
+on every user home directory, but paying attention to avoid override customization that the user may have done on those files.
+
